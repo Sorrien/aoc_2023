@@ -1,15 +1,15 @@
 pub fn solution(input: String) -> u32 {
     input
         .lines()
-        .map(|s| s.split(": ").nth(1).unwrap().split("; "))
+        .map(|s| s.split(": ").nth(1).expect("failed to get game string").split("; "))
         .map(|rounds| {
             let cube_sets = rounds
                 .map(|round| round.split(", ").map(str::to_owned).collect::<Vec<_>>())
                 .flatten()
                 .map(|cube_set| {
                     let mut cube_set_split = cube_set.split_ascii_whitespace();
-                    let num_cubes: u32 = cube_set_split.next().unwrap().parse().unwrap();
-                    let cube_type = cube_set_split.next().unwrap();
+                    let num_cubes: u32 = cube_set_split.next().expect("failed to get num string").parse().expect("failed to parse num cubes");
+                    let cube_type = cube_set_split.next().expect("failed to get cube type string");
 
                     let cube_type = match cube_type {
                         "red" => CubeType::Red,

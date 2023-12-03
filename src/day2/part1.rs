@@ -10,7 +10,7 @@ pub fn solution(input: String) -> u32 {
             
             let first = split.next();
             let mut first_split = first.expect("failed to find first half of game string").split_ascii_whitespace();
-            let id = first_split.nth(1).expect("failed to find game id string").parse::<u32>().unwrap();
+            let id = first_split.nth(1).expect("failed to find game id string").parse::<u32>().expect("failed to parse game id");
 
             let second = split.next();
             let rounds = second.expect("failed to find second half of game string").split("; ");
@@ -23,8 +23,8 @@ pub fn solution(input: String) -> u32 {
                 .flatten()
                 .map(|cube_set| {
                     let mut cube_set_split = cube_set.split_ascii_whitespace();
-                    let num_cubes: u32 = cube_set_split.next().unwrap().parse().unwrap();
-                    let cube_type = cube_set_split.next().unwrap();
+                    let num_cubes: u32 = cube_set_split.next().expect("failed to get num string").parse().expect("failed to parse num cubes");
+                    let cube_type = cube_set_split.next().expect("failed to get cube type string");
 
                     let is_cubeset_valid = match cube_type {
                         "red" => num_cubes <= RED_CUBE_TOTAL,
