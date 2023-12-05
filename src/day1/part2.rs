@@ -4,7 +4,7 @@ const NUMBERS: [&str; 9] = [
 const DIGIT_CHARS: [char; 9] = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 pub fn solution(input: String) -> u32 {
-    let digits: Vec<_> = input
+    input
         .lines()
         .map(|s| {
             let mut matches = Vec::new();
@@ -35,9 +35,5 @@ pub fn solution(input: String) -> u32 {
             String::from_iter([first, last])
         })
         .map(|s| s.parse::<u32>().expect("these should all be digits!"))
-        .collect();
-
-    let sum: u32 = digits.iter().sum();
-
-    sum
+        .sum()
 }
