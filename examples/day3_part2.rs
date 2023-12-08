@@ -1,4 +1,4 @@
-use aoc_2023::day3::part1::solution;
+use aoc_2023::day3::part2::solution;
 use std::fs;
 
 fn main() {
